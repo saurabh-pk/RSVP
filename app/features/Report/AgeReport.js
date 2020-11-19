@@ -35,9 +35,10 @@ export default class AgeReport extends Component {
                 }
             ]
         };
+        this._unsubscribe="";
     }
     componentDidMount() {
-        this._unsubscribe = navigation.addListener('focus', () => {
+        this._unsubscribe = this.props.navigation.addListener('focus', () => {
             this.fetchReportData();
         });
     }
@@ -91,7 +92,7 @@ export default class AgeReport extends Component {
                                 <View style={{flex:1,width:'100%',justifyContent:'center',alignItems:'center'}}>
                                     {report_data.map(section=>{
                                         let {color,label,value=0} = section;
-                                        return <View style={{width:'50%',flexDirection: 'row',alignItems:'center'}}>
+                                        return <View key={label} style={{width:'50%',flexDirection: 'row',alignItems:'center'}}>
                                             <Text
                                                 numberOfLines={1}
                                                 style={{color,flex:1,fontSize:fs.fs18,fontWeight:'bold',paddingVertical:5}}>
