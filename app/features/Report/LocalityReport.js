@@ -36,10 +36,11 @@ export default class LocalityReport extends Component {
                 }
             ]
         };
+        this._unsubscribe="";
     }
 
     componentDidMount() {
-        this._unsubscribe = navigation.addListener('focus', () => {
+        this._unsubscribe = this.props.navigation.addListener('focus', () => {
             this.fetchReportData();
         });
     }

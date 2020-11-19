@@ -19,9 +19,10 @@ export default class OtherReport extends Component {
         this.state = {
             avg_group_size:0,professional_cnt:0,student_cnt:0
         };
+        this._unsubscribe="";
     }
     componentDidMount() {
-        this._unsubscribe = navigation.addListener('focus', () => {
+        this._unsubscribe = this.props.navigation.addListener('focus', () => {
             this.fetchReportData();
         });
     }
@@ -40,6 +41,8 @@ export default class OtherReport extends Component {
         })
             .then((response) => response.json())
             .then((responseData) => {
+                console.log(responseData);
+
                 let {status,data} = responseData;
                 if(status){
                     let {avg_group_size=0,professional_cnt=0,student_cnt=0} = data;

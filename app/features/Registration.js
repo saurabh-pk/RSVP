@@ -87,6 +87,13 @@ export default class Home extends Component {
                     let {status,data,msg="Something went wrong, please try again later!"} = responseData;
                     if(status){
                         ah.showToastMessage(msg);
+                        this.setState({name:"",
+                            age:"",
+                            dob:"",
+                            profession:"",
+                            locality:"",
+                            guest_count:"",
+                            address:""})
                     } else {
                         this.setState({
                             errorStatus: true,
@@ -138,7 +145,6 @@ export default class Home extends Component {
                                     placeholder="Name"
                                     autoFocus={true}
                                     underlineColorAndroid="transparent"
-                                    showSoftInputOnFocus={false}
                                     returnKeyType={'next'}
                                     onSubmitEditing={event => {
                                         this.refs.AgeInput.focus();
@@ -156,7 +162,6 @@ export default class Home extends Component {
                                     onChangeText={age => this.setState({age})}
                                     placeholderTextColor={c.GraySolid}
                                     placeholder="Age"
-                                    autoFocus={true}
                                     underlineColorAndroid="transparent"
                                     returnKeyType={'next'}
                                     style={[styles.input, {color: c.GrayDarkest}]}
@@ -170,7 +175,6 @@ export default class Home extends Component {
                                     inputStyle={[styles.input,{borderBottomWidth:1,borderBottomColor: c.GrayStrong}]}
                                     textStyle={{color: c.GrayDark,fontSize: fs.fs17,}}
                                     date={dob}
-                                    autoFocus={true}
                                     mode={'date'}
                                     onValueChange={(dob)=>this.setState({dob})}
                                     placeholder={'DOB'}
@@ -200,7 +204,6 @@ export default class Home extends Component {
                                     onChangeText={locality => this.setState({locality})}
                                     placeholderTextColor={c.GraySolid}
                                     placeholder="Locality"
-                                    autoFocus={true}
                                     underlineColorAndroid="transparent"
                                     returnKeyType={'next'}
                                     onSubmitEditing={event => {
@@ -219,7 +222,6 @@ export default class Home extends Component {
                                     onChangeText={guest_count => this.setState({guest_count})}
                                     placeholderTextColor={c.GraySolid}
                                     placeholder="Number of Guests"
-                                    autoFocus={true}
                                     underlineColorAndroid="transparent"
                                     returnKeyType={'next'}
                                     onSubmitEditing={event => {
@@ -233,14 +235,12 @@ export default class Home extends Component {
                                     <FontAwesome name="globe" size={fs.fs18} color={c.Primary} />
                                 </View>
                                 <TextInput
-                                    keyboardType={'numeric'}
                                     ref="AddressInput"
                                     multiline={true}
                                     maxLength={50}
                                     onChangeText={address => this.setState({address})}
                                     placeholderTextColor={c.GraySolid}
                                     placeholder="Address"
-                                    autoFocus={true}
                                     underlineColorAndroid="transparent"
                                     returnKeyType={'next'}
                                     style={[styles.input, {color: c.GrayDarkest}]}
